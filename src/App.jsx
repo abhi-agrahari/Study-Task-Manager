@@ -5,8 +5,20 @@ import TaskForm from './components/TaskForm'
 
 function App() {
 
-  const [tasks, setTasks] = useState([])
   const [darkMode, setDarkMode] = useState(false)
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks")
+
+    if(savedTasks){
+      return JSON.parse(savedTasks)
+    }
+
+    return []
+  })
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+  }, [tasks])
 
   const addTask = (task) => {
     setTasks((prev) => [
@@ -51,7 +63,7 @@ function App() {
         <div className='nav-bar'>
           <h1> Study Task Manager </h1>
 
-          <button className='theme-btn' onClick={handleTheme}> Dark Mode </button>
+          <button className='theme-btn' onClick={handleTheme}> {darkMode ? "Light Mode" : "Dark Mode"} </button>
         </div>
 
         <TaskForm addTask={addTask} />
