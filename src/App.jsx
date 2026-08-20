@@ -7,22 +7,43 @@ function App() {
 
   const [tasks, setTasks] = useState([])
 
-  const [formData, setFormData] = useState({})
-
-  const addTask = () => {
+  const addTask = (task) => {
     setTasks((prev) => [
       ...prev,
-      formData
+      task
     ])
-
-    console.log(tasks)
   }
+
+  const deleteTask = (key => 
+    setTasks((prev) =>
+      prev.filter(task => task.key !== key)
+    )
+  )
+
+  const markComplete = ((key) => {
+    setTasks((prev) => {
+      const updatedTasks = prev.map((task) => {
+        if(task.key === key){
+          const updatedTask = {
+            ...task,
+            status : "completed"
+          }
+
+          return updatedTask
+        }
+
+        return task
+      })
+
+      return updatedTasks
+    })
+  })
  
   return (
     <>
       <h1> Study Task Manager </h1>
 
-      <TaskForm formData={formData} setFormData={setFormData} addTask={addTask} />
+      <TaskForm addTask={addTask} />
 
       {
         tasks.map((task) => (
@@ -31,7 +52,10 @@ function App() {
             subject = {task.subject}
             estimatedTime = {task.estimatedTime}
             status = {task.status}
-            key = {crypto.randomUUID()}
+            key = {task.key}
+            taskKey = {task.key}
+            deleteTask = {deleteTask}
+            markComplete = {markComplete}
           />
         ))
       }

@@ -1,6 +1,14 @@
 function TaskCard(props){
 
-    const {title, subject, estimatedTime, status} = props
+    const { title, subject, estimatedTime, status, taskKey, deleteTask, markComplete } = props
+
+    const handleDelete = (() => {
+        deleteTask(taskKey)
+    })
+
+    const handleStaus = (() => {
+        markComplete(taskKey)
+    })
 
     return (
         <div>
@@ -11,8 +19,8 @@ function TaskCard(props){
                 <p> {status} </p>
             </div>
             <div>
-                <button> Completed </button>
-                <button> Deleted </button>
+                <button onClick={handleStaus} > Completed </button>
+                <button onClick={handleDelete}> Deleted </button>
             </div>
         </div>
     )

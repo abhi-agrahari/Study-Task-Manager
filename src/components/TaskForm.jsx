@@ -1,8 +1,12 @@
 import { useState } from "react"
 
-function TaskForm({ formData, setFormData, addTask }){
+function TaskForm({ addTask }){
 
-    //const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        title: "",
+        subject: "",
+        estimatedTime: ""
+    })
 
     const handleChange = ((event) => {
         const {name, value} = event.target
@@ -16,9 +20,17 @@ function TaskForm({ formData, setFormData, addTask }){
     const handleSubmit = ((event) => {
         event.preventDefault()
 
-        addTask()
+        addTask({
+            ...formData,
+            key : crypto.randomUUID(),
+            status : "pending"
+        })
 
-        console.log(formData)
+        setFormData({
+            title: "",
+            subject: "",
+            estimatedTime: ""
+        })
     })
 
     return (
@@ -27,18 +39,21 @@ function TaskForm({ formData, setFormData, addTask }){
                 type="text"
                 name="title"
                 placeholder="Title"
+                value={formData.title}
                 onChange={handleChange}
             />
             <input
                 type="text"
                 name="subject"
                 placeholder="Subject"
+                value={formData.subject}
                 onChange={handleChange}
             />
             <input
                 type="text"
                 name="estimatedTime"
                 placeholder="Estimated Time"
+                value={formData.estimatedTime}
                 onChange={handleChange}
             />
 
