@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './TaskForm.css'
 
 function TaskForm({ addTask }){
 
@@ -20,6 +21,12 @@ function TaskForm({ addTask }){
     const handleSubmit = ((event) => {
         event.preventDefault()
 
+        if(formData.title.trim() === "" ||
+            formData.subject.trim() === "" ||
+            formData.estimatedTime.trim() === ""){
+                return
+            }
+
         addTask({
             ...formData,
             key : crypto.randomUUID(),
@@ -34,7 +41,7 @@ function TaskForm({ addTask }){
     })
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-container">
             <input
                 type="text"
                 name="title"

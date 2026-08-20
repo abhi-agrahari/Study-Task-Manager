@@ -45,20 +45,22 @@ function App() {
 
       <TaskForm addTask={addTask} />
 
-      {
-        tasks.map((task) => (
-          <TaskCard
-            title = {task.title}
-            subject = {task.subject}
-            estimatedTime = {task.estimatedTime}
-            status = {task.status}
-            key = {task.key}
-            taskKey = {task.key}
-            deleteTask = {deleteTask}
-            markComplete = {markComplete}
-          />
-        ))
-      }
+      <div  className='task-cards'>
+        {
+          tasks.map((task) => (
+            <TaskCard
+              title = {task.title}
+              subject = {task.subject}
+              estimatedTime = {task.estimatedTime}
+              status = {task.status}
+              key = {task.key}
+              taskKey = {task.key}
+              deleteTask = {deleteTask}
+              markComplete = {markComplete}
+            />
+          ))
+        }
+      </div>
     </>
   )
 }
