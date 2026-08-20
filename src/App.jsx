@@ -6,6 +6,7 @@ import TaskForm from './components/TaskForm'
 function App() {
 
   const [tasks, setTasks] = useState([])
+  const [darkMode, setDarkMode] = useState(false)
 
   const addTask = (task) => {
     setTasks((prev) => [
@@ -38,28 +39,39 @@ function App() {
       return updatedTasks
     })
   })
+
+  const handleTheme = (() => {
+    let prev = darkMode;
+    setDarkMode(!prev)
+  })
  
   return (
     <>
-      <h1> Study Task Manager </h1>
+      <div className={darkMode?'dark-mode':'light-mode'}>
+        <div className='nav-bar'>
+          <h1> Study Task Manager </h1>
 
-      <TaskForm addTask={addTask} />
+          <button className='theme-btn' onClick={handleTheme}> Dark Mode </button>
+        </div>
 
-      <div  className='task-cards'>
-        {
-          tasks.map((task) => (
-            <TaskCard
-              title = {task.title}
-              subject = {task.subject}
-              estimatedTime = {task.estimatedTime}
-              status = {task.status}
-              key = {task.key}
-              taskKey = {task.key}
-              deleteTask = {deleteTask}
-              markComplete = {markComplete}
-            />
-          ))
-        }
+        <TaskForm addTask={addTask} />
+
+        <div  className='task-cards'>
+          {
+            tasks.map((task) => (
+              <TaskCard
+                title = {task.title}
+                subject = {task.subject}
+                estimatedTime = {task.estimatedTime}
+                status = {task.status}
+                key = {task.key}
+                taskKey = {task.key}
+                deleteTask = {deleteTask}
+                markComplete = {markComplete}
+              />
+            ))
+          }
+        </div>
       </div>
     </>
   )

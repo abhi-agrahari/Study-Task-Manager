@@ -36,3 +36,13 @@ button {
 button:hover {
   background-color: #16a34a;
 }
+
+.dark-mode input {
+    background-color: #27272a;
+    color: white;
+    border-color: #52525b;
+}
+
+.dark-mode input::placeholder {
+    color: #a1a1aa;
+}
