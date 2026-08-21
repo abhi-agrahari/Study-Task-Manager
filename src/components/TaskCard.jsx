@@ -2,7 +2,7 @@ import './TaskCard.css'
 
 function TaskCard(props){
 
-    const { title, subject, estimatedTime, status, taskKey, deleteTask, markComplete } = props
+    const { title, subject, estimatedTime, status, taskKey, createdAt, deleteTask, markComplete } = props
 
     const handleDelete = (() => {
         deleteTask(taskKey)
@@ -19,6 +19,7 @@ function TaskCard(props){
                 <p>Subject : {subject} </p>
                 <p>Estimated Time : {estimatedTime} </p>
                 <p>Status : {status} </p>
+                <p>Created At : {createdAt} </p>
             </div>
             <div className='task-buttons'>
                 <button onClick={handleStaus} className='complete-btn' > Completed </button>

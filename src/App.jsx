@@ -76,6 +76,7 @@ function App() {
                 subject = {task.subject}
                 estimatedTime = {task.estimatedTime}
                 status = {task.status}
+                createdAt = {task.createdAt}
                 key = {task.key}
                 taskKey = {task.key}
                 deleteTask = {deleteTask}

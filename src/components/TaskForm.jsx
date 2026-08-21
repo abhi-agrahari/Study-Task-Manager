@@ -25,12 +25,25 @@ function TaskForm({ addTask }){
             formData.subject.trim() === "" ||
             formData.estimatedTime.trim() === ""){
                 return
-            }
+        }
+
+        const now = new Date();
+
+        const createdAt = now.toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        }) + ', ' + now.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+        })
 
         addTask({
             ...formData,
             key : crypto.randomUUID(),
-            status : "pending"
+            status : "pending",
+            createdAt : createdAt
         })
 
         setFormData({
