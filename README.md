@@ -1,16 +1,14 @@
-# React + Vite
+# Study Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A platform in which User can list their tasks and manage them.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+  - User can add tasks, mentioning it title, subject and estimated time.
+  - User can change the status of a task from pending to completed.
+  - User can delete a task.
+  - User can switch between light mode and dark mode.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  vite + React (javascript library)
